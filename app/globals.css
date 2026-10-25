@@ -986,6 +986,24 @@ h3 {
   isolation: isolate;
 }
 
+.territoryMapBackground {
+  position: absolute;
+  z-index: 0;
+  top: 37%;
+  right: max(var(--gutter), calc((100% - var(--content)) / 2));
+  width: min(48vw, 680px);
+  max-width: none;
+  height: auto;
+  opacity: 0.28;
+  transform: translateY(-37%);
+  pointer-events: none;
+}
+
+.territoryContent {
+  position: relative;
+  z-index: 1;
+}
+
 .territoryHeader {
   position: relative;
   z-index: 1;
@@ -1046,17 +1064,6 @@ h3 {
   color: rgb(255 255 255 / 64%);
   font-size: 11px;
   line-height: 1.6;
-}
-
-.territoryWatermark {
-  position: absolute;
-  z-index: 0;
-  top: 45px;
-  right: max(var(--gutter), calc((100% - var(--content)) / 2 + 12px));
-  width: clamp(120px, 16vw, 205px);
-  height: auto;
-  opacity: 0.045;
-  pointer-events: none;
 }
 
 .expertsSection {
@@ -1423,10 +1430,6 @@ h3 {
   grid-column: 1 / -1;
 }
 
-.workspaceForm .workspaceInterestField {
-  grid-column: 1 / -1;
-}
-
 .workspaceSubmit {
   width: fit-content;
   min-height: 46px;
@@ -1447,13 +1450,6 @@ h3 {
 .workspaceSubmit:disabled {
   cursor: not-allowed;
   opacity: 0.78;
-}
-
-.workspaceFormNote {
-  align-self: center;
-  color: var(--muted);
-  font-size: 11px;
-  line-height: 1.5;
 }
 
 .siteFooter {
@@ -1673,13 +1669,8 @@ h3 {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .workspaceForm .workspaceMessageField,
-  .workspaceForm .workspaceInterestField {
+  .workspaceForm .workspaceMessageField {
     grid-column: 1;
-  }
-
-  .workspaceFormNote {
-    margin-top: -3px;
   }
 
   .productExperience {
@@ -2035,10 +2026,11 @@ h3 {
     padding-inline: var(--gutter);
   }
 
-  .territoryWatermark {
-    top: 44px;
+  .territoryMapBackground {
+    top: 43%;
     right: var(--gutter);
-    width: 112px;
+    width: min(70vw, 560px);
+    transform: translateY(-50%);
   }
 
   .territoryHeader {
@@ -2046,30 +2038,39 @@ h3 {
   }
 
   .territoryGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: clamp(160px, 41vw, 180px);
   }
 
   .territoryGrid article {
-    min-height: 132px;
-    padding: 17px 12px 14px 0;
+    display: grid;
+    grid-template-columns: 40px minmax(0, 1fr);
+    grid-template-areas:
+      "index title"
+      ". detail";
+    align-items: baseline;
+    column-gap: 8px;
+    padding: 15px 0 16px;
   }
 
   .territoryGrid article + article {
-    padding-left: 12px;
-  }
-
-  .territoryGrid article:nth-child(3) {
     padding-left: 0;
+    border-top: 1px solid rgb(255 255 255 / 22%);
     border-left: 0;
   }
 
-  .territoryGrid article:nth-child(n + 3) {
-    border-top: 1px solid rgb(255 255 255 / 22%);
+  .territoryIndex {
+    grid-area: index;
   }
 
   .territoryGrid h3 {
-    margin-top: 19px;
-    font-size: 17px;
+    grid-area: title;
+    margin-top: 0;
+  }
+
+  .territoryGrid p {
+    grid-area: detail;
+    margin-top: 4px;
   }
 
   .expertsLayout {
@@ -2247,12 +2248,6 @@ h3 {
   .homeHeroPillars {
     margin-top: 20px;
     font-size: clamp(16px, 4.5vw, 18px);
-  }
-
-  .territoryWatermark {
-    top: 40px;
-    right: 20px;
-    width: 88px;
   }
 
   .territoryHeader h2 {

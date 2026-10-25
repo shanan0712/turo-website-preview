@@ -6,10 +6,10 @@ import SiteFooter from "./components/site-footer";
 import WorkspaceSection from "./components/workspace-section";
 
 const territoryFeatures = [
-  { title: "My Route", detail: "Keep your own route close." },
-  { title: "Routes", detail: "Find another way through." },
-  { title: "Places", detail: "See what’s around you." },
-  { title: "Leaderboards", detail: "Share progress with your community." },
+  { title: "My Route", detail: "Keep your routes close and record your best performances." },
+  { title: "Challenges", detail: "Challenge others on your routes and compete for the best scores." },
+  { title: "Places", detail: "Explore the best and most popular routes in your city." },
+  { title: "Leaderboards", detail: "See where you rank among the top performers." },
 ];
 
 export default function Home() {
@@ -106,21 +106,31 @@ export default function Home() {
       </section>
 
       <section id="territory" className="territorySection" aria-labelledby="territory-title">
-        <div className="territoryHeader">
-          <p className="eyebrow">Territory / Discover</p>
-          <h2 id="territory-title">A layer around the places you move through.</h2>
-          <p className="sectionLead">Territory connects routes, places and movement. Keep your own path close; find another place to go when you’re ready.</p>
+        <Image
+          className="territoryMapBackground"
+          src="/Images/website/Territory map view.png"
+          alt=""
+          width={1710}
+          height={920}
+          sizes="(max-width: 760px) 70vw, 48vw"
+          aria-hidden="true"
+        />
+        <div className="territoryContent">
+          <div className="territoryHeader">
+            <p className="eyebrow">TERRITORY / DISCOVER</p>
+            <h2 id="territory-title">A layer around the places you move through.</h2>
+            <p className="sectionLead">Territory connects routes, places and movement. Keep your own path close; find another place to go when you’re ready.</p>
+          </div>
+          <div className="territoryGrid">
+            {territoryFeatures.map((feature, index) => (
+              <article key={feature.title}>
+                <span className="territoryIndex">0{index + 1}</span>
+                <h3>{feature.title}</h3>
+                <p>{feature.detail}</p>
+              </article>
+            ))}
+          </div>
         </div>
-        <div className="territoryGrid">
-          {territoryFeatures.map((feature, index) => (
-            <article key={feature.title}>
-              <span className="territoryIndex">0{index + 1}</span>
-              <h3>{feature.title}</h3>
-              <p>{feature.detail}</p>
-            </article>
-          ))}
-        </div>
-        <Image className="territoryWatermark" src="/Images/turo-logo-white.PNG" alt="" width={2134} height={2134} aria-hidden="true" />
       </section>
 
       <section id="experts" className="expertsSection" aria-labelledby="experts-title">

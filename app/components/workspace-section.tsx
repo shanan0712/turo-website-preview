@@ -74,17 +74,6 @@ export default function WorkspaceSection() {
                 <option>1,001+</option>
               </select>
             </label>
-            <label className="workspaceInterestField">
-              What are you interested in?
-              <select name="interest" defaultValue="" required>
-                <option value="" disabled>Select an area</option>
-                <option>Movement</option>
-                <option>Community</option>
-                <option>Challenges and events</option>
-                <option>Everyday wellbeing</option>
-                <option>Something else</option>
-              </select>
-            </label>
             <label className="workspaceMessageField">
               Message
               <textarea name="message" rows={4} required />
@@ -92,9 +81,6 @@ export default function WorkspaceSection() {
             <button className="workspaceSubmit" type="submit" disabled>
               Send request <span aria-hidden="true">→</span>
             </button>
-            <p className="workspaceFormNote">
-              The form is ready to connect to a submission destination.
-            </p>
           </form>
         </div>
       </dialog>
