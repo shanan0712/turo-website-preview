@@ -4,6 +4,7 @@ import HomeHeroVideo from "./components/home-hero-video";
 import SiteNav from "./components/site-nav";
 import SiteFooter from "./components/site-footer";
 import WorkspaceSection from "./components/workspace-section";
+import WorkInProgress from "./components/WorkInProgress";
 
 const territoryFeatures = [
   { title: "My Route", detail: "Keep your routes close and record your best performances." },
@@ -176,16 +177,7 @@ export default function Home() {
         <Image className="originMark" src="/Images/turo-logo-white.PNG" alt="" width={2134} height={2134} aria-hidden="true" />
       </section>
 
-      <section className="finalCta sectionShell" aria-labelledby="cta-title">
-        <div>
-          <p className="eyebrow">Simple habits that compound.</p>
-          <h2 id="cta-title">Build something<br />that fits real life.</h2>
-        </div>
-        <div className="finalCtaAction">
-          <p>Turó is taking shape with people who want everyday wellbeing to work better.</p>
-          <a href="#experts" className="buttonDark">Meet the experts <span aria-hidden="true">↗</span></a>
-        </div>
-      </section>
+      <WorkInProgress />
 
       <WorkspaceSection />
 
