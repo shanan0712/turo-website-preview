@@ -3,6 +3,7 @@ import Link from "next/link";
 import HomeHeroVideo from "./components/home-hero-video";
 import SiteNav from "./components/site-nav";
 import SiteFooter from "./components/site-footer";
+import WorkspaceSection from "./components/workspace-section";
 
 const territoryFeatures = [
   { title: "My Route", detail: "Keep your own route close." },
@@ -88,17 +89,19 @@ export default function Home() {
 
       <section id="social" className="connectSection" aria-labelledby="connect-title">
         <div className="connectContent">
-          <p className="eyebrow">Turó Social / Connect</p>
-          <h2 id="connect-title">Find your people.<br />Go do something.</h2>
-          <p className="sectionLead">A community for people who want to move, explore and live well together. Built around shared activity, not endless scrolling.</p>
-          <ul className="socialList">
-            <li>Find people for a run or activity</li>
-            <li>Share routes and progress</li>
-            <li>Join community leaderboards</li>
-          </ul>
+          <p className="eyebrow">@CLUBTURO</p>
+          <h2 id="connect-title">For those who choose to live well.</h2>
+          <p className="sectionLead">People who value their time, their health, and the way they spend both.</p>
+          <p className="connectSupporting">Move together. Discover new places. Connect with people who see wellbeing as part of a life well lived.</p>
         </div>
         <figure className="communityArtwork">
-          <Image src="/Images/website/community-run.png" alt="Turó brings runners together around a shared route" fill sizes="(max-width: 760px) 100vw, 48vw" />
+          <Image
+            src="/Images/website/community-run.png"
+            alt="Friends sharing a moment together after a run."
+            width={2160}
+            height={2700}
+            sizes="(max-width: 600px) calc(100vw - 48px), (max-width: 900px) calc(100vw - 68px), (max-width: 1100px) 52vw, 640px"
+          />
         </figure>
       </section>
 
@@ -173,6 +176,8 @@ export default function Home() {
           <a href="#experts" className="buttonDark">Meet the experts <span aria-hidden="true">↗</span></a>
         </div>
       </section>
+
+      <WorkspaceSection />
 
       <SiteFooter />
     </main>
