@@ -1,69 +1,180 @@
 import Image from "next/image";
+import Link from "next/link";
+import HomeHeroVideo from "./components/home-hero-video";
+import SiteNav from "./components/site-nav";
+import SiteFooter from "./components/site-footer";
+
+const territoryFeatures = [
+  { title: "My Route", detail: "Keep your own route close." },
+  { title: "Routes", detail: "Find another way through." },
+  { title: "Places", detail: "See what’s around you." },
+  { title: "Leaderboards", detail: "Share progress with your community." },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main id="top" className="homePage">
+      <section className="homeHero" aria-labelledby="hero-title">
+        <HomeHeroVideo />
+        <div className="homeHeroOverlay" />
+        <SiteNav />
+        <div className="homeHeroComposition">
+          <div className="homeHeroCopy">
+            <h1 id="hero-title">Simple habits that compound.</h1>
+            <p className="homeHeroPillars">Move. Eat. Recover. Connect.</p>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+      </section>
+
+      <section className="homeHeroIntro" aria-label="About Turó">
+        <div className="homeHeroIntroContent">
+          <div className="homeHeroIntroCopy">
+            <a href="#product" className="homeHeroIntroCta">
+              EXPLORE TURÓ <span aria-hidden="true">→</span>
+            </a>
             <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
+              className="homeHeroIntroMark"
+              src="/Images/turo-logo-white.PNG"
+              alt="Turó symbol"
+              width={2134}
+              height={2134}
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <p>Inspired by Barcelona, the way you live shapes how you feel. Turó brings the everyday habits that matter into one connected experience.</p>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section id="product" className="wellbeingSection" aria-label="Movement, nutrition and recovery">
+        <article id="move" className="wellbeingChapter movementChapter" aria-labelledby="movement-title">
+          <p className="eyebrow">Movement</p>
+          <div className="wellbeingChapterContent">
+            <h2 id="movement-title">Move with purpose.</h2>
+            <div className="wellbeingChapterCopy">
+              <p className="wellbeingLead">Find your route. Keep moving.</p>
+              <p>Turó brings movement into your everyday — helping you discover new routes, explore new places, and stay connected to what keeps you moving.</p>
+            </div>
+          </div>
+        </article>
+
+        <article id="eat" className="wellbeingChapter nutritionChapter" aria-labelledby="nutrition-title">
+          <p className="eyebrow">Nutrition</p>
+          <div className="wellbeingChapterContent">
+            <h2 id="nutrition-title">Eat well. Live well.</h2>
+            <div className="wellbeingChapterCopy">
+              <p className="wellbeingLead">Good food should fit your life.</p>
+              <p>Turó helps you make more informed choices about what you eat, bringing your goals, preferences, and everyday habits together so eating well feels natural.</p>
+            </div>
+          </div>
+        </article>
+
+        <article id="recover" className="wellbeingChapter recoveryChapter" aria-labelledby="recovery-title">
+          <div className="recoveryChapterCopy">
+            <p className="eyebrow">Recovery</p>
+            <h2 id="recovery-title">Recover with intention.</h2>
+            <p className="wellbeingLead">Give your body what it needs.</p>
+            <p>Turó brings together your movement, environment, and everyday habits to help you stay hydrated, recover well, and feel ready for what comes next.</p>
+          </div>
+          <figure className="recoveryVisual">
+            <Image
+              src="/Images/website/hydration-ring.png"
+              alt="A person drinks water as Turó adjusts their hydration target for the conditions around them."
+              width={1080}
+              height={1350}
+              sizes="(max-width: 760px) min(100vw - 40px, 520px), (max-width: 1100px) 52vw, 600px"
+            />
+          </figure>
+        </article>
+      </section>
+
+      <section id="social" className="connectSection" aria-labelledby="connect-title">
+        <div className="connectContent">
+          <p className="eyebrow">Turó Social / Connect</p>
+          <h2 id="connect-title">Find your people.<br />Go do something.</h2>
+          <p className="sectionLead">A community for people who want to move, explore and live well together. Built around shared activity, not endless scrolling.</p>
+          <ul className="socialList">
+            <li>Find people for a run or activity</li>
+            <li>Share routes and progress</li>
+            <li>Join community leaderboards</li>
+          </ul>
+        </div>
+        <figure className="communityArtwork">
+          <Image src="/Images/website/community-run.png" alt="Turó brings runners together around a shared route" fill sizes="(max-width: 760px) 100vw, 48vw" />
+        </figure>
+      </section>
+
+      <section id="territory" className="territorySection" aria-labelledby="territory-title">
+        <div className="territoryHeader">
+          <p className="eyebrow">Territory / Discover</p>
+          <h2 id="territory-title">A layer around the places you move through.</h2>
+          <p className="sectionLead">Territory connects routes, places and movement. Keep your own path close; find another place to go when you’re ready.</p>
+        </div>
+        <div className="territoryGrid">
+          {territoryFeatures.map((feature, index) => (
+            <article key={feature.title}>
+              <span className="territoryIndex">0{index + 1}</span>
+              <h3>{feature.title}</h3>
+              <p>{feature.detail}</p>
+            </article>
+          ))}
+        </div>
+        <Image className="territoryWatermark" src="/Images/turo-logo-white.PNG" alt="" width={2134} height={2134} aria-hidden="true" />
+      </section>
+
+      <section id="experts" className="expertsSection" aria-labelledby="experts-title">
+        <div className="expertsLayout">
+          <div className="expertsContent">
+            <p className="eyebrow">Experts</p>
+            <h2 id="experts-title">Expertise that informs how you live.</h2>
+            <p className="sectionLead">Turó brings together expertise in nutrition, movement and performance to make wellbeing more personal, informed and practical.</p>
+            <div className="expertProfiles">
+              <article className="expertProfile">
+                <h3>Dr. Giulia Solimando</h3>
+                <p className="expertRole">Nutrition specialist</p>
+                <p>Specialized in personalized diet plans and nutritional strategies for health and performance. Expert in pregnancy and breastfeeding nutrition, integrating training and nutrition synergistically.</p>
+              </article>
+              <article className="expertProfile">
+                <h3>Dr. Filippo Polpatelli</h3>
+                <p className="expertRole">Sports nutrition expert</p>
+                <p>Specialized in nutrition for professional athletes with targeted dietary and supplementation strategies. Scientific approach to optimize performance, recovery, and quality of life across sports disciplines.</p>
+              </article>
+            </div>
+          </div>
+          <figure className="expertsImage">
+            <Image
+              src="/Images/website/experts-team.jpg"
+              alt="Dr. Giulia Solimando and Dr. Filippo Polpatelli"
+              width={1080}
+              height={1080}
+              sizes="(max-width: 420px) calc(100vw - 40px), (max-width: 900px) calc(100vw - 68px), (max-width: 1100px) 48vw, 600px"
+            />
+          </figure>
+        </div>
+      </section>
+
+      <section id="origin" className="originSection" aria-labelledby="origin-title">
+        <Image src="/Images/website/movement-barcelona.jpg" alt="A moment of movement in Barcelona" fill sizes="100vw" />
+        <div className="originShade" />
+        <div className="originContent">
+          <p className="eyebrow">The starting point</p>
+          <h2 id="origin-title">Born in Barcelona.<br />Inspired by how people live.<br />Built for everywhere.</h2>
+          <p>Movement, food, sport, streets, sun and community shaped the idea behind Turó.</p>
+          <Link href="/barcelona" className="lightLink">The Barcelona story <span aria-hidden="true">↗</span></Link>
+        </div>
+        <Image className="originMark" src="/Images/turo-logo-white.PNG" alt="" width={2134} height={2134} aria-hidden="true" />
+      </section>
+
+      <section className="finalCta sectionShell" aria-labelledby="cta-title">
+        <div>
+          <p className="eyebrow">Simple habits that compound.</p>
+          <h2 id="cta-title">Build something<br />that fits real life.</h2>
+        </div>
+        <div className="finalCtaAction">
+          <p>Turó is taking shape with people who want everyday wellbeing to work better.</p>
+          <a href="#experts" className="buttonDark">Meet the experts <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
+      <SiteFooter />
+    </main>
   );
 }
