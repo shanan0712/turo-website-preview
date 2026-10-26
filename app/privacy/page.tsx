@@ -40,14 +40,14 @@ export default function PrivacyPage() {
               <span>Effective date: </span>26 May 2026
             </p>
           </div>
-          <nav className="legalDocumentNav" aria-label="Legal documents">
-            <Link href="/terms">TERMS</Link>
-            <span className="legalDocumentDivider" aria-hidden="true" />
-            <Link href="/privacy" aria-current="page">
-              PRIVACY
-            </Link>
-          </nav>
         </header>
+        <nav className="legalDocumentNav" aria-label="Legal documents">
+          <Link href="/terms">TERMS</Link>
+          <span className="legalDocumentDivider" aria-hidden="true" />
+          <Link href="/privacy" aria-current="page">
+            PRIVACY
+          </Link>
+        </nav>
 
         <nav className="privacyContents" aria-labelledby="privacy-contents-title">
           <h2 className="privacyEyebrow" id="privacy-contents-title">
