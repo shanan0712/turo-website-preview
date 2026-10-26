@@ -87,6 +87,7 @@ export default function Home() {
         </article>
       </section>
 
+      <div className="whiteBand">
       <section id="social" className="connectSection" aria-labelledby="connect-title">
         <div className="connectContent">
           <p className="eyebrow">@CLUBTURO</p>
@@ -104,6 +105,7 @@ export default function Home() {
           />
         </figure>
       </section>
+      </div>
 
       <section id="territory" className="territorySection" aria-labelledby="territory-title">
         <Image
@@ -179,7 +181,9 @@ export default function Home() {
 
       <WorkspaceSection />
 
-      <SiteFooter />
+      <div className="whiteBand">
+        <SiteFooter />
+      </div>
     </main>
   );
 }

@@ -915,6 +915,11 @@ h3 {
   height: auto;
 }
 
+.whiteBand {
+  width: 100%;
+  background: #ffffff;
+}
+
 .connectSection {
   width: min(var(--content), calc(100% - (var(--gutter) * 2)));
   margin-inline: auto;
@@ -2181,27 +2186,310 @@ h3 {
   color: var(--ink);
 }
 
-.contactPageContent {
+.siteFooterMinimal {
+  min-height: 0;
+  padding-block: 32px;
+  display: block;
+}
+
+.siteFooterMinimal .footerLegalLinks a:nth-child(2) {
+  margin-left: 0;
+  padding-left: 0;
+  border-left: 0;
+}
+
+.contactPage {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+}
+
+.contactShell {
   width: min(var(--content), calc(100% - (var(--gutter) * 2)));
-  min-height: min(58vh, 640px);
   margin-inline: auto;
-  padding-block: clamp(76px, 10vw, 132px);
 }
 
-.contactPageContent .eyebrow {
-  margin-bottom: 22px;
+.contactHeader {
+  background: var(--home-hero-intro-background);
+  color: #fff;
+  padding-block: clamp(36px, 5vw, 64px) clamp(36px, 5vw, 60px);
 }
 
-.contactPageContent h1 {
-  max-width: 780px;
-  font-size: clamp(48px, 7vw, 88px);
-  letter-spacing: -0.06em;
+.contactBack {
+  width: fit-content;
+  margin-bottom: clamp(26px, 3.5vw, 40px);
+  display: inline-flex;
+  align-items: center;
+  color: #fff;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.contactHeader h1 {
+  max-width: 760px;
+  color: #fff;
+  font-size: clamp(40px, 6vw, 64px);
+  letter-spacing: -0.065em;
   line-height: 0.98;
+}
+
+.contactHeader p {
+  max-width: 520px;
+  margin-top: 18px;
+  color: rgb(255 255 255 / 72%);
+  font-size: clamp(14px, 1.3vw, 16px);
+  line-height: 1.6;
+}
+
+.contactMain {
+  flex: 1;
+  background: #ffffff;
+}
+
+.contactLayout {
+  padding-block: clamp(32px, 4.5vw, 64px) clamp(40px, 6vw, 80px);
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: start;
+}
+
+.contactInfo {
+  display: grid;
+  align-content: start;
+  gap: 28px;
+}
+
+.contactInfo h2,
+.contactForm label {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.contactInfo p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.contactInfo a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+.contactForm {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
+  gap: 22px 24px;
+}
+
+.contactFormWide {
+  grid-column: 1 / -1;
+}
+
+.contactForm label {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.contactPhoneField {
+  display: grid;
+  gap: 2px;
+}
+
+.contactPhoneRow {
+  display: flex;
+  gap: 16px;
+}
+
+.contactPhoneRow input {
+  flex: 1;
+  min-width: 0;
+}
+
+.contactCountry {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
+  border-bottom: 1px solid var(--line);
+  font-size: 16px;
+  white-space: nowrap;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.contactCountry::after {
+  content: "⌄";
+  position: absolute;
+  right: 2px;
+  top: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  pointer-events: none;
+}
+
+.contactCountry:hover {
+  border-bottom-color: rgb(25 26 23 / 45%);
+}
+
+.contactCountry:focus-within {
+  border-bottom-color: var(--ink);
+  box-shadow: 0 1px 0 var(--ink);
+}
+
+.contactCountry select {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.contactForm input,
+.contactForm textarea {
+  width: 100%;
+  padding: 10px 0 12px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 17px;
+  letter-spacing: 0;
+  text-transform: none;
+  transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.contactForm textarea {
+  min-height: 84px;
+  resize: vertical;
+}
+
+.contactForm input:hover,
+.contactForm textarea:hover {
+  border-bottom-color: rgb(25 26 23 / 45%);
+}
+
+.contactForm input:focus,
+.contactForm textarea:focus {
+  outline: 0;
+  border-bottom-color: var(--ink);
+  box-shadow: 0 1px 0 var(--ink);
+}
+
+.contactForm [aria-invalid="true"],
+.contactForm .contactCountry:has([aria-invalid="true"]) {
+  border-bottom-color: #b3261e;
+  box-shadow: 0 1px 0 #b3261e;
+}
+
+.contactError {
+  margin-top: 6px;
+  color: #b3261e;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.4;
+  text-transform: none;
+}
+
+.contactStatus {
+  grid-column: 1 / -1;
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.contactStatus[data-tone="error"] {
+  color: #b3261e;
+}
+
+.contactStatus strong {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.contactStatus button {
+  margin-top: 12px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.contactFormSubmit {
+  grid-column: 1 / -1;
+  width: fit-content;
+  min-height: 56px;
+  padding: 0 32px;
+  border: 0;
+  border-radius: 3px;
+  background: var(--lime);
+  color: #000;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: background-color 160ms var(--ease);
+}
+
+.contactFormSubmit:hover {
+  background: var(--white);
+}
+
+.contactFormSubmit:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 4px;
+}
+
+.contactFormSubmit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 860px) {
+  .contactLayout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .contactForm {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contactForm input,
+  .contactForm textarea,
+  .contactCountry select {
+    font-size: 16px;
+  }
+
+  .contactFormSubmit {
+    width: 100%;
+  }
 }
 
 .privacyPage {
   width: 100%;
-  background: var(--canvas);
+  background: #ffffff;
 }
 
 .privacyDocument {
@@ -2361,6 +2649,10 @@ h3 {
 .privacyContents li {
   min-width: 0;
   border-top: 1px solid var(--line);
+}
+
+.privacyContents li:nth-child(-n + 2) {
+  border-top: 0;
 }
 
 .privacyContents a {
@@ -2551,6 +2843,10 @@ h3 {
 
   .privacyContents ol {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .privacyContents li:nth-child(2) {
+    border-top: 1px solid var(--line);
   }
 
   .privacyBackLink {
@@ -3065,6 +3361,11 @@ h3 {
     min-height: 196px;
     padding-block: 22px 16px;
     row-gap: 9px;
+  }
+
+  .siteFooterMinimal {
+    min-height: 0;
+    padding-block: 28px;
   }
 
   .footerBrand {

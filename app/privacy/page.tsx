@@ -95,7 +95,7 @@ export default function PrivacyPage() {
           ))}
         </div>
 
-        <footer className="privacyLegalEnding">
+        <footer className="privacyLegalEnding termsLegalEnding">
           <p className="privacyContactLine">
             For questions contact{" "}
             <a href="mailto:support@clubturo.com">support@clubturo.com</a>
