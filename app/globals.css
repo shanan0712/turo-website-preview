@@ -2121,16 +2121,15 @@ h3 {
   .mobileNavLinks {
     position: absolute;
     z-index: 60;
-    top: calc(100% + 10px);
+    top: calc(100% + 2px);
     right: 0;
-    width: min(280px, calc(100vw - 40px));
-    padding: 8px;
+    width: min(220px, calc(100vw - 40px));
+    padding: 4px 5px;
     display: grid;
-    gap: 2px;
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    background: var(--canvas);
-    box-shadow: 0 12px 32px rgb(25 26 23 / 10%);
+    gap: 0;
+    border: 0;
+    border-radius: 2px;
+    background: rgb(20 55 30 / 12%);
   }
 
   .homeHero .siteNav {
@@ -2161,34 +2160,35 @@ h3 {
     color: var(--lime);
   }
 
-  .homeHero .mobileNavLinks {
-    border-color: rgb(255 254 250 / 15%);
-    background: #171b16;
-    box-shadow: 0 12px 32px rgb(0 0 0 / 24%);
+  .mobileNavLinks a,
+  .homeHero .mobileNavLinks a {
+    color: rgb(255 254 250 / 88%);
   }
 
-  .homeHero .mobileNavLinks a {
-    color: rgb(255 254 250 / 82%);
+  .mobileNavLinks .navQuietLink,
+  .homeHero .mobileNavLinks .navQuietLink {
+    color: rgb(255 254 250 / 68%);
   }
 
   .homeHero .mobileNavLinks a:hover,
   .homeHero .mobileNavLinks a:focus-visible {
-    background: rgb(255 255 255 / 7%);
+    background: transparent;
     color: var(--lime);
   }
 
   .mobileNavLinks a {
-    min-height: 42px;
-    padding: 0 12px;
+    min-height: 38px;
+    padding: 0 11px;
     display: flex;
     align-items: center;
-    border-radius: 8px;
+    border-radius: 2px;
     font-size: 13px;
+    font-weight: 400;
   }
 
   .mobileNavLinks a:hover,
   .mobileNavLinks a:focus-visible {
-    background: var(--surface);
+    background: transparent;
   }
 
   .hero {
@@ -2579,6 +2579,78 @@ h3 {
     font-size: 40px;
   }
 
+}
+
+@media (max-width: 760px) {
+  .mobileNav summary {
+    width: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0;
+    justify-content: center;
+    gap: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    font-size: 0;
+  }
+
+  .homeHero .mobileNav summary {
+    min-height: 44px;
+    padding: 0;
+    font-size: 0;
+  }
+
+  .mobileNav summary span,
+  .mobileNav[open] summary span {
+    position: relative;
+    width: 20px;
+    flex: 0 0 20px;
+    height: 14px;
+    display: block;
+    background: linear-gradient(currentColor, currentColor) center / 14px 1px no-repeat;
+    font-size: 0;
+    transform: none;
+    transition: background-size 140ms ease;
+  }
+
+  .mobileNav summary span::before,
+  .mobileNav summary span::after {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 6.5px;
+    height: 1px;
+    background: currentColor;
+    content: "";
+    transform-origin: center;
+    transition: transform 160ms var(--ease), opacity 140ms ease;
+  }
+
+  .mobileNav summary span::before {
+    transform: translateY(-6.5px);
+  }
+
+  .mobileNav summary span::after {
+    transform: translateY(6.5px);
+  }
+
+  .mobileNav[open] summary span {
+    background-size: 0 1px;
+  }
+
+  .mobileNav[open] summary span::before {
+    transform: rotate(45deg);
+  }
+
+  .mobileNav[open] summary span::after {
+    transform: rotate(-45deg);
+  }
+
+  .homeHero .mobileNav summary:hover {
+    border-color: transparent;
+    color: rgb(255 254 250 / 82%);
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {
