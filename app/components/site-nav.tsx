@@ -1,12 +1,38 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import type { MouseEvent } from "react";
 
 export default function SiteNav({ home = true }: { home?: boolean }) {
   const section = (id: string) => home ? `#${id}` : `/#${id}`;
+  const handleSectionClick = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (
+      !home ||
+      !href.startsWith("#") ||
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    ) {
+      return;
+    }
+
+    const target = document.getElementById(href.slice(1));
+    if (!target) return;
+
+    event.preventDefault();
+    if (window.location.hash !== href) {
+      window.history.pushState(null, "", href);
+    }
+    target.scrollIntoView();
+  };
   const links = [
     { label: "Home", href: section("top") },
     { label: "@clubturo", href: section("social") },
-    { label: "Barcelona", href: "/barcelona" },
+    { label: "Barcelona", href: section("origin") },
     { label: "Experts", href: section("experts") },
     { label: "Legal", href: "/privacy", quiet: true },
   ];
@@ -19,7 +45,12 @@ export default function SiteNav({ home = true }: { home?: boolean }) {
         </Link>
         <div className="navLinks">
           {links.map((link) => (
-            <Link key={link.label} href={link.href} className={link.quiet ? "navQuietLink" : undefined}>
+            <Link
+              key={link.label}
+              href={link.href}
+              className={link.quiet ? "navQuietLink" : undefined}
+              onClick={(event) => handleSectionClick(event, link.href)}
+            >
               {link.label}
             </Link>
           ))}
@@ -30,7 +61,12 @@ export default function SiteNav({ home = true }: { home?: boolean }) {
           </summary>
           <div className="mobileNavLinks">
             {links.map((link) => (
-              <Link key={link.label} href={link.href} className={link.quiet ? "navQuietLink" : undefined}>
+              <Link
+                key={link.label}
+                href={link.href}
+                className={link.quiet ? "navQuietLink" : undefined}
+                onClick={(event) => handleSectionClick(event, link.href)}
+              >
                 {link.label}
               </Link>
             ))}
