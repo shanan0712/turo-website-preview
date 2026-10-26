@@ -1494,6 +1494,414 @@ h3 {
   }
 }
 
+.turo-legal-root {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #0a0a0a;
+  color: #fff;
+  font-family: var(--font-legal-body), "Helvetica Neue", sans-serif;
+  scrollbar-color: rgb(255 255 255 / 12%) transparent;
+  scrollbar-width: thin;
+}
+
+.turo-topbar {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid rgb(255 255 255 / 7%);
+  background: #0a0a0a;
+}
+
+.turo-back-btn,
+.turo-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 1px solid rgb(255 255 255 / 7%);
+  border-radius: 6px;
+  background: #161616;
+  color: rgb(255 255 255 / 45%);
+  font: inherit;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+
+.turo-back-btn {
+  flex-shrink: 0;
+  padding: 0.45rem 0.9rem;
+}
+
+.turo-back-btn:hover {
+  color: #fff;
+}
+
+.turo-doc-tabs {
+  display: flex;
+  flex-shrink: 0;
+  gap: 0.5rem;
+}
+
+.turo-tab-btn {
+  padding: 0.45rem 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+.turo-tab-btn.active {
+  border-color: #b2f40b;
+  background: #b2f40b;
+  color: #0a0a0a;
+  font-weight: 700;
+}
+
+.turo-hero {
+  padding: 2.5rem 1.25rem 2rem;
+  border-bottom: 1px solid rgb(255 255 255 / 7%);
+}
+
+.turo-eyebrow {
+  margin-bottom: 1rem;
+  color: #b2f40b;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.turo-hero-title {
+  color: #fff;
+  font-family: var(--font-legal-display), Impact, sans-serif;
+  font-size: clamp(2.8rem, 10vw, 7.5rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 0.92;
+  overflow-wrap: anywhere;
+  text-wrap: balance;
+}
+
+.turo-hero-dates {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.turo-hero-dates p,
+.turo-hero-dates span,
+.turo-hero-dates strong {
+  font-size: 0.75rem;
+}
+
+.turo-hero-dates span {
+  color: rgb(255 255 255 / 45%);
+}
+
+.turo-hero-dates strong {
+  color: #fff;
+  font-weight: 600;
+}
+
+.turo-mobile-toc-toggle {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  border: 0;
+  border-bottom: 1px solid rgb(255 255 255 / 7%);
+  background: #161616;
+  color: rgb(255 255 255 / 45%);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-align: left;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.turo-mobile-toc-toggle:hover {
+  color: #fff;
+}
+
+.turo-mobile-toc-drawer {
+  max-height: 0;
+  overflow: hidden;
+  border-bottom: 1px solid rgb(255 255 255 / 7%);
+  background: #111;
+  transition: max-height 0.3s ease;
+}
+
+.turo-mobile-toc-drawer.open {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.turo-mobile-toc-drawer[aria-hidden="true"] {
+  visibility: hidden;
+}
+
+.turo-body {
+  display: flex;
+  align-items: flex-start;
+}
+
+.turo-sidebar {
+  display: none;
+}
+
+.turo-sidebar-label {
+  display: block;
+  margin-bottom: 1rem;
+  padding: 0 1.5rem;
+  color: rgb(255 255 255 / 45%);
+  font-size: 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.turo-nav-btn {
+  display: block;
+  width: 100%;
+  padding: 0.55rem 1.5rem;
+  border: 0;
+  border-left: 3px solid transparent;
+  background: none;
+  color: rgb(255 255 255 / 45%);
+  cursor: pointer;
+  font-family: var(--font-legal-body), sans-serif;
+  font-size: 0.75rem;
+  line-height: 1.4;
+  text-align: left;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.turo-nav-btn:hover {
+  color: rgb(255 255 255 / 75%);
+}
+
+.turo-nav-btn.active {
+  border-left-color: #b2f40b;
+  color: #fff;
+}
+
+.turo-nav-num {
+  margin-right: 0.55rem;
+  color: rgb(255 255 255 / 12%);
+  font-size: 0.62rem;
+}
+
+.turo-nav-btn.active .turo-nav-num {
+  color: #b2f40b;
+}
+
+.turo-main {
+  flex: 1;
+  min-width: 0;
+  padding: 2rem 1.25rem 6rem;
+}
+
+.turo-provider-card {
+  margin-bottom: 2.5rem;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid rgb(255 255 255 / 7%);
+  border-radius: 10px;
+  background: #161616;
+  overflow-wrap: anywhere;
+}
+
+.turo-provider-label {
+  margin-bottom: 0.75rem;
+  color: #b2f40b;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.turo-provider-name {
+  margin-bottom: 0.35rem;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.turo-provider-detail {
+  margin-bottom: 0.2rem;
+  color: rgb(255 255 255 / 45%);
+  font-size: 0.82rem;
+  overflow-wrap: anywhere;
+}
+
+.turo-section {
+  margin-bottom: 3rem;
+  scroll-margin-top: 82px;
+}
+
+.turo-section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  margin-bottom: 0.85rem;
+}
+
+.turo-section-num {
+  flex-shrink: 0;
+  color: #b2f40b;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.turo-section-heading {
+  color: #fff;
+  font-family: var(--font-legal-display), Impact, sans-serif;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+  text-transform: uppercase;
+}
+
+.turo-section-rule {
+  width: 2rem;
+  height: 1px;
+  margin-bottom: 1.1rem;
+  margin-left: 1.7rem;
+  background: #b2f40b;
+}
+
+.turo-section-body {
+  margin-left: 1.7rem;
+  min-width: 0;
+}
+
+.turo-section-para {
+  margin-bottom: 1rem;
+  color: rgb(255 255 255 / 65%);
+  font-size: 0.84rem;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+.turo-footer {
+  margin-left: 1.7rem;
+  padding: 2rem 0;
+  border-top: 1px solid rgb(255 255 255 / 7%);
+  color: rgb(255 255 255 / 45%);
+  font-size: 0.72rem;
+  overflow-wrap: anywhere;
+}
+
+.turo-footer a {
+  color: #b2f40b;
+}
+
+@media (min-width: 640px) {
+  .turo-topbar {
+    padding: 1rem 2.5rem;
+  }
+
+  .turo-hero {
+    padding: 4rem 2.5rem 3.5rem;
+  }
+
+  .turo-main {
+    padding: 2.5rem 2rem 8rem;
+  }
+
+  .turo-provider-card {
+    margin-bottom: 3rem;
+    padding: 1.5rem 1.75rem;
+  }
+
+  .turo-section {
+    margin-bottom: 3.5rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .turo-mobile-toc-toggle,
+  .turo-mobile-toc-drawer {
+    display: none;
+  }
+
+  .turo-sidebar {
+    position: sticky;
+    top: 57px;
+    display: block;
+    width: 260px;
+    min-width: 220px;
+    height: calc(100vh - 57px);
+    flex-shrink: 0;
+    overflow-y: auto;
+    padding: 2rem 0;
+    border-right: 1px solid rgb(255 255 255 / 7%);
+    scrollbar-width: none;
+  }
+
+  .turo-sidebar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .turo-main {
+    padding: 2.5rem 2.5rem 8rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .turo-sidebar {
+    width: 280px;
+  }
+
+  .turo-main {
+    padding: 2.5rem 3.5rem 8rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .turo-topbar {
+    gap: 0.5rem;
+    padding-inline: 0.75rem;
+  }
+
+  .turo-back-btn {
+    padding-inline: 0.65rem;
+  }
+
+  .turo-doc-tabs {
+    gap: 0.35rem;
+  }
+
+  .turo-tab-btn {
+    padding-inline: 0.6rem;
+  }
+
+  .turo-main {
+    padding-inline: 1rem;
+  }
+
+  .turo-section-header {
+    gap: 0.6rem;
+  }
+}
+
 .buttonDark {
   margin-top: 22px;
   background: var(--lime);
@@ -1788,6 +2196,355 @@ h3 {
   font-size: clamp(48px, 7vw, 88px);
   letter-spacing: -0.06em;
   line-height: 0.98;
+}
+
+.privacyPage {
+  width: 100%;
+  background: var(--canvas);
+}
+
+.privacyDocument {
+  width: min(100% - (var(--gutter) * 2), 980px);
+  margin-inline: auto;
+  padding-block: clamp(64px, 8vw, 112px) clamp(48px, 7vw, 88px);
+}
+
+.privacyDocumentHeader {
+  padding-bottom: clamp(36px, 4.5vw, 54px);
+  border-bottom: 1px solid var(--line);
+}
+
+.privacyBackLink {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: clamp(30px, 4vw, 42px);
+  color: var(--muted);
+  font-size: 20px;
+  line-height: 1;
+}
+
+.privacyBackLink:hover {
+  color: var(--ink);
+}
+
+.privacyLegalLabel {
+  margin-bottom: 10px;
+}
+
+.privacyDocumentHeader h1 {
+  max-width: 760px;
+  font-size: clamp(46px, 7vw, 76px);
+  letter-spacing: -0.065em;
+  line-height: 0.98;
+}
+
+.privacyDates {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 24px;
+  margin-top: 24px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.privacyDates p:last-child {
+  justify-self: end;
+  text-align: right;
+}
+
+.privacyDates span {
+  color: #454840;
+  font-weight: 550;
+}
+
+.legalDocumentNav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.privacyPage .legalDocumentNav {
+  margin-top: 28px;
+}
+
+.legalDocumentNav a {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1.6;
+  transition: color 150ms ease;
+}
+
+.legalDocumentNav > span {
+  display: block;
+}
+
+.legalDocumentNav > .legalDocumentDivider {
+  width: 0;
+  height: 12px;
+  flex: 0 0 0;
+  border-left: 1px solid #a1a39a;
+}
+
+.legalDocumentNav a:hover,
+.legalDocumentNav a[aria-current="page"] {
+  color: var(--ink);
+}
+
+.legalDocumentNav a[aria-current="page"] {
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.turo-legal-root .legalDocumentNav a {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: rgb(255 255 255 / 45%);
+  font-family: var(--font-legal-body), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.turo-legal-root .legalDocumentNav {
+  gap: 16px;
+}
+
+.turo-legal-root .legalDocumentNav > .legalDocumentDivider {
+  border-left-color: rgb(255 255 255 / 30%);
+}
+
+.turo-legal-root .legalDocumentNav a:hover,
+.turo-legal-root .legalDocumentNav a[aria-current="page"] {
+  color: #fff;
+}
+
+.privacyEyebrow {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+}
+
+.privacyContents {
+  padding-block: clamp(32px, 5vw, 56px);
+  border-bottom: 1px solid var(--line);
+}
+
+.privacyContents ol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 36px;
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.privacyContents li {
+  min-width: 0;
+  border-top: 1px solid var(--line);
+}
+
+.privacyContents a {
+  min-height: 43px;
+  padding-block: 10px;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 6px;
+  color: #41433d;
+  font-size: 13px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+  transition: color 150ms ease;
+}
+
+.privacyContents a span {
+  color: var(--muted);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+.privacyContents a:hover {
+  color: var(--ink);
+}
+
+.privacyProvider {
+  padding-block: clamp(32px, 5vw, 56px);
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.privacyProvider .privacyEyebrow {
+  margin-bottom: 14px;
+}
+
+.privacyProviderName {
+  margin-bottom: 3px;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 620;
+}
+
+.privacyProvider a,
+.privacySectionBody a,
+.privacyContactLine a,
+.privacyCopyright a {
+  text-decoration: underline;
+  text-decoration-color: rgb(101 104 95 / 45%);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  overflow-wrap: anywhere;
+}
+
+.privacyProvider a:hover,
+.privacySectionBody a:hover,
+.privacyContactLine a:hover,
+.privacyCopyright a:hover {
+  color: var(--ink);
+  text-decoration-color: currentColor;
+}
+
+.privacySections {
+  width: min(100%, 760px);
+  margin-inline: auto;
+  padding-top: clamp(38px, 5.5vw, 64px);
+}
+
+.privacySection {
+  scroll-margin-top: 110px;
+}
+
+.privacySection + .privacySection {
+  margin-top: clamp(42px, 6vw, 72px);
+  padding-top: clamp(30px, 4vw, 46px);
+  border-top: 1px solid var(--line);
+}
+
+.privacySectionHeader {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.privacySectionHeader > span {
+  color: #77804f;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 650;
+  letter-spacing: 0.04em;
+}
+
+.privacySectionHeader h2 {
+  min-width: 0;
+  color: var(--ink);
+  font-size: clamp(18px, 2vw, 21px);
+  font-weight: 590;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.privacySectionBody {
+  min-width: 0;
+  margin-left: 54px;
+  color: #4f524a;
+  font-size: 16px;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+}
+
+.privacySectionBody p {
+  margin-bottom: 16px;
+}
+
+.privacySectionBody p:last-child {
+  margin-bottom: 0;
+}
+
+.privacySectionBody ul {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 18px;
+  padding-left: 20px;
+}
+
+.privacySectionBody li {
+  padding-left: 3px;
+}
+
+.privacyContact {
+  margin-top: 2px;
+}
+
+.privacyDefinitions {
+  display: grid;
+  gap: 14px;
+}
+
+.privacyLegalEnding {
+  width: min(100%, 760px);
+  margin: clamp(56px, 7vw, 84px) auto 0;
+  padding: 24px 0 0 54px;
+  border-top: 1px solid var(--line);
+}
+
+.privacyContactLine {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.privacyCopyright {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  line-height: 1.6;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 600px) {
+  .privacyDates {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .privacyContents ol {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .privacyBackLink {
+    margin-bottom: 28px;
+  }
+
+  .privacyPage .legalDocumentNav {
+    margin-top: 20px;
+  }
+
+  .privacyLegalEnding {
+    padding-left: 0;
+  }
 }
 
 /* Barcelona origin page */
