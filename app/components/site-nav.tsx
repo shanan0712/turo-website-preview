@@ -8,7 +8,7 @@ export default function SiteNav({ home = true }: { home?: boolean }) {
     { label: "@clubturo", href: section("social") },
     { label: "Barcelona", href: "/barcelona" },
     { label: "Experts", href: section("experts") },
-    { label: "Legal", href: "/legal", quiet: true },
+    { label: "Legal", href: "/privacy", quiet: true },
   ];
 
   return (

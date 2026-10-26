@@ -118,11 +118,12 @@ export default function TermsPage() {
           ))}
         </div>
 
-        <footer className="privacyLegalEnding">
+        <footer className="privacyLegalEnding termsLegalEnding">
           <p className="privacyContactLine">
-            © 2026 Turó. For questions contact{" "}
+            For questions contact{" "}
             <a href="mailto:support@clubturo.com">support@clubturo.com</a>
           </p>
+          <p className="privacyCopyright">© 2026 TURO BCN S.L.</p>
         </footer>
       </article>
     </main>
