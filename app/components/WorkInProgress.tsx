@@ -7,7 +7,7 @@ import { useRef, useState } from "react";
 
 const screens = [
   {
-    category: "MOVE",
+    category: "SET",
     title: "Start with a goal.",
     detail: "Choose your activity and let Turó guide every step.",
     image: "/Images/website/move-goal.png",
@@ -17,7 +17,7 @@ const screens = [
     alt: "Turó activity goal screen",
   },
   {
-    category: "MOVE",
+    category: "DISCOVER",
     title: "Explore new routes.",
     detail: "Discover new routes and places to move, explore and stay active.",
     image: "/Images/website/explore-new-routes.png",
@@ -27,7 +27,7 @@ const screens = [
     alt: "Turó route discovery screen",
   },
   {
-    category: "MOVE",
+    category: "BUILD",
     title: "Stay consistent.",
     detail: "Build simple habits and keep moving towards your goals.",
     image: "/Images/website/stay-consistent.png",
