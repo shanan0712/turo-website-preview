@@ -1222,6 +1222,9 @@ h3 {
 .workInProgressContent {
   width: min(var(--content), calc(100% - (var(--gutter) * 2)));
   margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .workInProgressEyebrow {
@@ -1236,9 +1239,8 @@ h3 {
   margin-inline: auto;
   overflow-x: auto;
   overflow-y: hidden;
-  overscroll-behavior-x: contain;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
+  scroll-behavior: auto;
+  scroll-snap-type: none;
   scrollbar-width: none;
   user-select: none;
   touch-action: pan-x pan-y;
@@ -1264,9 +1266,6 @@ h3 {
   flex: 0 0 var(--work-slide-width);
   display: grid;
   place-items: center;
-  scroll-snap-align: center;
-  scroll-snap-stop: always;
-  transition: opacity 320ms var(--ease);
 }
 
 .workInProgressPhone {
@@ -1389,17 +1388,8 @@ h3 {
 
 .workInProgressTimelineTrack::after {
   left: 0;
-  width: 0;
+  width: var(--story-progress, 0%);
   background: rgb(196 240 75 / 76%);
-  transition: width 260ms ease;
-}
-
-.workInProgressTimelineTrack[data-active-index="1"]::after {
-  width: 50%;
-}
-
-.workInProgressTimelineTrack[data-active-index="2"]::after {
-  width: 100%;
 }
 
 @media (max-width: 900px) {
@@ -1435,13 +1425,23 @@ h3 {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .workInProgressTrack,
-  .workInProgressSlide,
-  .workInProgressTimelineTrack::after {
-    transition-duration: 0.01ms;
+@media (max-height: 500px) {
+  .workInProgressSection {
+    --work-phone-width: min(32vw, 110px);
+    --work-slide-width: min(54vw, 190px);
   }
 
+  .workInProgressEyebrow {
+    margin-bottom: 18px;
+  }
+
+  .workInProgressStory {
+    height: 110px;
+    margin-top: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
   .workInProgressTrack {
     scroll-behavior: auto;
   }
@@ -1727,6 +1727,13 @@ h3 {
   position: relative;
   z-index: 1;
   width: min(100%, 940px);
+}
+
+.barcelonaPageMark {
+  width: clamp(64px, 8vw, 112px);
+  height: auto;
+  margin-bottom: clamp(20px, 3vw, 32px);
+  object-fit: contain;
 }
 
 .barcelonaPageContent .eyebrow {

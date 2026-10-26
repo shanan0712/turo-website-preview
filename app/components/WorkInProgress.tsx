@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import type { CSSProperties } from "react";
-import type { PointerEvent, UIEvent } from "react";
+import type { PointerEvent, UIEvent, WheelEvent } from "react";
 import { useRef, useState } from "react";
 
 const screens = [
@@ -43,6 +43,7 @@ const formatNumber = (number: number) => String(number).padStart(2, "0");
 const phoneAspectRatio = 0.55;
 const visibleDeviceWidth = 85;
 const visibleDeviceHeight = 91;
+const horizontalWheelSensitivity = 0.88;
 
 type Screen = (typeof screens)[number];
 
@@ -106,43 +107,51 @@ export default function WorkInProgress() {
     pointerId: -1,
     startX: 0,
     startScrollLeft: 0,
-    startIndex: 0,
-    moved: false,
   });
   const [activeIndex, setActiveIndex] = useState(0);
   const activeScreen = screens[activeIndex];
 
-  const scrollToScreen = (index: number) => {
-    const track = trackRef.current;
-    const slide = track?.querySelectorAll<HTMLElement>(".workInProgressSlide")[index];
-    if (!track || !slide) return;
-
-    const scrollDelta =
-      slide.getBoundingClientRect().left +
-      slide.clientWidth / 2 -
-      (track.getBoundingClientRect().left + track.clientWidth / 2);
-    track.scrollTo({
-      left: track.scrollLeft + scrollDelta,
-      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
-    });
-  };
-
   const handleTrackScroll = (event: UIEvent<HTMLDivElement>) => {
     const track = event.currentTarget;
-    const trackCenter = track.getBoundingClientRect().left + track.clientWidth / 2;
-    let nearestIndex = 0;
-    let nearestDistance = Number.POSITIVE_INFINITY;
+    const slideWidth = track.querySelector<HTMLElement>(".workInProgressSlide")?.offsetWidth ?? 0;
+    const nearestIndex = slideWidth
+      ? Math.min(screens.length - 1, Math.round(track.scrollLeft / slideWidth))
+      : 0;
+    setActiveIndex((currentIndex) => (currentIndex === nearestIndex ? currentIndex : nearestIndex));
+    const timelineTrack = track.closest(".workInProgressSection")?.querySelector<HTMLElement>(
+      ".workInProgressTimelineTrack",
+    );
+    const progress = track.scrollWidth > track.clientWidth
+      ? track.scrollLeft / (track.scrollWidth - track.clientWidth)
+      : 0;
+    timelineTrack?.style.setProperty("--story-progress", `${progress * 100}%`);
+  };
 
-    track.querySelectorAll<HTMLElement>(".workInProgressSlide").forEach((slide, index) => {
-      const slideCenter = slide.getBoundingClientRect().left + slide.clientWidth / 2;
-      const distance = Math.abs(slideCenter - trackCenter);
-      if (distance < nearestDistance) {
-        nearestDistance = distance;
-        nearestIndex = index;
-      }
-    });
+  const handleTrackWheel = (event: WheelEvent<HTMLDivElement>) => {
+    if (event.deltaY !== 0 && !event.shiftKey) return;
 
-    setActiveIndex(nearestIndex);
+    const track = event.currentTarget;
+    const lineHeight = Number.parseFloat(getComputedStyle(track).lineHeight) || 16;
+    const delta = event.shiftKey && event.deltaX === 0 ? event.deltaY : event.deltaX;
+    const multiplier =
+      event.deltaMode === WheelEvent.DOM_DELTA_LINE
+        ? lineHeight
+        : event.deltaMode === WheelEvent.DOM_DELTA_PAGE
+          ? track.clientWidth
+          : 1;
+    const horizontalDelta = delta * multiplier;
+    const maxScrollLeft = track.scrollWidth - track.clientWidth;
+
+    if (
+      horizontalDelta === 0 ||
+      (horizontalDelta < 0 && track.scrollLeft <= 0) ||
+      (horizontalDelta > 0 && track.scrollLeft >= maxScrollLeft)
+    ) {
+      return;
+    }
+
+    event.preventDefault();
+    track.scrollLeft += horizontalDelta * horizontalWheelSensitivity;
   };
 
   const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
@@ -152,19 +161,15 @@ export default function WorkInProgress() {
       pointerId: event.pointerId,
       startX: event.clientX,
       startScrollLeft: track.scrollLeft,
-      startIndex: activeIndex,
-      moved: false,
     };
+    track.setPointerCapture(event.pointerId);
   };
 
   const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType !== "mouse") return;
     const drag = dragRef.current;
     if (drag.pointerId !== event.pointerId) return;
     const delta = event.clientX - drag.startX;
-    if (!drag.moved && Math.abs(delta) < 6) return;
-
-    if (!drag.moved) event.currentTarget.setPointerCapture(event.pointerId);
-    drag.moved = true;
     event.currentTarget.scrollLeft = drag.startScrollLeft - delta;
     event.preventDefault();
   };
@@ -173,18 +178,14 @@ export default function WorkInProgress() {
     const drag = dragRef.current;
     if (drag.pointerId !== event.pointerId) return;
 
-    if (drag.moved) {
-      const direction = event.clientX < drag.startX ? 1 : -1;
-      const targetIndex = Math.max(0, Math.min(screens.length - 1, drag.startIndex + direction));
-      setActiveIndex(targetIndex);
-      scrollToScreen(targetIndex);
-    }
-
     drag.pointerId = -1;
   };
 
   return (
-    <section className="workInProgressSection" aria-label="Work in progress: Turó product experience">
+    <section
+      className="workInProgressSection"
+      aria-label="Work in progress: Turó product experience"
+    >
       <div className="workInProgressContent">
         <p className="eyebrow workInProgressEyebrow">WORK IN PROGRESS</p>
 
@@ -192,6 +193,7 @@ export default function WorkInProgress() {
           className="workInProgressTrack"
           ref={trackRef}
           onScroll={handleTrackScroll}
+          onWheel={handleTrackWheel}
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
@@ -231,7 +233,6 @@ export default function WorkInProgress() {
           <span aria-current={activeIndex === 0 ? "step" : undefined}>01</span>
           <div
             className="workInProgressTimelineTrack"
-            data-active-index={activeIndex}
             aria-hidden="true"
           />
           <span aria-current={activeIndex === 1 ? "step" : undefined}>02</span>
