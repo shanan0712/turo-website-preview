@@ -16,6 +16,7 @@ html {
   --lime: #c4f04b;
   --white: #fffefa;
   --dark: #191a17;
+  --home-hero-intro-background: #10130f;
   --gutter: clamp(20px, 5vw, 72px);
   --content: 1280px;
   --space: clamp(76px, 9vw, 132px);
@@ -480,7 +481,7 @@ h3 {
   position: relative;
   padding: clamp(44px, 5vw, 64px) var(--homeEditorialInset);
   overflow: hidden;
-  background: #10130f;
+  background: var(--home-hero-intro-background);
   color: var(--white);
   isolation: isolate;
 }
@@ -2212,7 +2213,7 @@ h3 {
 .privacyDocumentHeader {
   margin-inline: calc(-1 * max(var(--gutter), (100vw - 980px) / 2));
   padding: clamp(64px, 8vw, 112px) max(var(--gutter), (100vw - 980px) / 2) 0;
-  background: #262b26;
+  background: var(--home-hero-intro-background);
   color: #fff;
 }
 
