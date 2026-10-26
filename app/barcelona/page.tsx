@@ -49,7 +49,7 @@ export default function BarcelonaPage() {
         </div>
       </section>
 
-      <SiteFooter home={false} />
+      <SiteFooter />
     </main>
   );
 }

@@ -168,7 +168,7 @@ export default function Home() {
         <Image src="/Images/website/movement-barcelona.jpg" alt="A moment of movement in Barcelona" fill sizes="100vw" />
         <div className="originShade" />
         <div className="originContent">
-          <p className="eyebrow">The starting point</p>
+          <p className="eyebrow">THE STARTING POINT</p>
           <h2 id="origin-title">Born in Barcelona.<br />Inspired by the way we live.<br />Built for everywhere.</h2>
           <p>Movement, food, sport, streets, sun and community shaped the idea behind Turó.</p>
         </div>
