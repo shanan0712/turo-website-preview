@@ -917,21 +917,20 @@ h3 {
 .connectSection {
   width: min(var(--content), calc(100% - (var(--gutter) * 2)));
   margin-inline: auto;
-  padding-block: clamp(58px, 6.5vw, 88px);
+  padding-block: clamp(48px, 5vw, 68px);
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr);
-  gap: clamp(38px, 5.2vw, 72px);
-  align-items: start;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.8fr);
+  gap: clamp(30px, 4vw, 56px);
+  align-items: center;
 }
 
 .connectContent {
   min-width: 0;
-  padding-top: 4px;
 }
 
 .connectContent .eyebrow {
-  margin-bottom: 20px;
-  color: var(--lime);
+  margin-bottom: 16px;
+  color: var(--muted);
   font-weight: 700;
   letter-spacing: 0.16em;
 }
@@ -961,9 +960,9 @@ h3 {
 .communityArtwork {
   min-width: 0;
   width: 100%;
-  max-width: 460px;
+  max-width: 360px;
   margin: 0;
-  justify-self: end;
+  justify-self: start;
   overflow: hidden;
   border-radius: var(--radius);
 }
@@ -1168,25 +1167,35 @@ h3 {
 .originContent {
   position: relative;
   z-index: 1;
-  width: min(100%, 1020px);
+  width: min(100%, var(--content));
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: clamp(14px, 2vw, 28px);
+  row-gap: 0;
+  align-items: end;
 }
 
 .originContent .eyebrow {
-  margin-bottom: 20px;
+  grid-column: 1 / -1;
+  margin-bottom: clamp(34px, 4.5vw, 54px);
   color: var(--lime);
+  font-size: 11px;
 }
 
 .originContent h2 {
-  max-width: 1000px;
-  font-size: clamp(40px, 5.2vw, 72px);
+  grid-column: 1 / span 8;
+  max-width: 860px;
+  font-size: clamp(48px, 4.7vw, 68px);
   font-weight: 550;
   letter-spacing: -0.05em;
-  line-height: 1.1;
+  line-height: 1.08;
 }
 
 .originContent > p:not(.eyebrow) {
-  max-width: 500px;
-  margin-top: 22px;
+  grid-column: 1 / span 6;
+  max-width: 470px;
+  align-self: start;
+  margin-top: clamp(22px, 2.8vw, 34px);
   color: rgb(255 255 255 / 78%);
   font-size: 14px;
   line-height: 1.7;
@@ -1201,12 +1210,50 @@ h3 {
 
 .originMark {
   position: absolute;
-  right: max(var(--gutter), calc((100% - var(--content)) / 2 + 20px));
-  bottom: 55px;
-  width: 74px;
-  height: 74px;
-  opacity: 0.9;
+  right: -24px;
+  bottom: -4px;
+  width: 220px;
+  height: 220px;
+  opacity: 0.82;
   object-fit: contain;
+}
+
+@media (max-width: 900px) {
+  .originContent {
+    width: min(100%, 680px);
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    padding-bottom: clamp(92px, 12vw, 112px);
+  }
+
+  .originContent .eyebrow,
+  .originContent h2,
+  .originContent > p:not(.eyebrow) {
+    grid-column: 1;
+  }
+
+  .originContent .eyebrow {
+    margin-bottom: 30px;
+  }
+
+  .originContent h2 {
+    max-width: 720px;
+    font-size: clamp(46px, 6.3vw, 60px);
+    line-height: 1.08;
+  }
+
+  .originContent > p:not(.eyebrow) {
+    align-self: start;
+    max-width: 420px;
+    margin-top: 24px;
+  }
+
+  .originMark {
+    right: -18px;
+    bottom: -4px;
+    width: clamp(160px, 19vw, 180px);
+    height: clamp(160px, 19vw, 180px);
+  }
 }
 
 .workInProgressSection {
@@ -1877,12 +1924,13 @@ h3 {
 
 @media (max-width: 900px) {
   .connectSection {
+    padding-block: clamp(48px, 7vw, 64px);
     grid-template-columns: minmax(0, 1fr);
-    gap: clamp(30px, 5vw, 42px);
+    gap: 22px;
   }
 
   .communityArtwork {
-    width: min(100%, 540px);
+    width: min(100%, clamp(240px, 38vw, 320px));
     justify-self: start;
   }
 }
@@ -2234,13 +2282,13 @@ h3 {
   }
 
   .connectSection {
-    padding-block: clamp(52px, 12vw, 66px);
+    padding-block: clamp(42px, 8vw, 54px);
     grid-template-columns: 1fr;
-    gap: 26px;
+    gap: 18px;
   }
 
   .communityArtwork {
-    width: min(100%, 380px);
+    width: min(100%, clamp(220px, 64vw, 280px));
     justify-self: start;
   }
 
@@ -2306,7 +2354,7 @@ h3 {
   }
 
   .originSection > img:first-child {
-    object-position: 66% center;
+    object-position: 45% center;
   }
 
   .originShade {
@@ -2320,10 +2368,11 @@ h3 {
   }
 
   .originMark {
-    right: var(--gutter);
-    bottom: 28px;
-    width: 48px;
-    height: 48px;
+    right: auto;
+    bottom: -7px;
+    left: -22px;
+    width: 120px;
+    height: 120px;
   }
 
   .siteFooter {
@@ -2473,6 +2522,10 @@ h3 {
 
   .originSection {
     min-height: 590px;
+  }
+
+  .originContent {
+    width: min(100%, 270px);
   }
 
   .originContent h2 {
