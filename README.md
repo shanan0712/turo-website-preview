@@ -34,3 +34,31 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+### Production video
+
+The original Turó story video is tracked with Git LFS and is approximately 104 MB.
+For Vercel deployments, upload that unchanged MP4 to a public object-storage or
+CDN URL that supports byte-range requests, then set this Vercel environment
+variable:
+
+```text
+NEXT_PUBLIC_STORY_VIDEO_URL=https://your-video-host.example/turo-story.mp4
+```
+
+The URL must point directly to the MP4 (not a player page), return
+`Content-Type: video/mp4`, and support `Range` requests. The local Git-LFS asset
+remains as the development fallback when the variable is not set. No video
+re-encoding or compression is required.
+
+The email API routes also require these server-only Vercel environment
+variables:
+
+```text
+RESEND_API_KEY=
+CONTACT_FROM_EMAIL=
+CONTACT_TO_EMAIL=
+NEXT_PUBLIC_SITE_URL=https://www.clubturo.com
+```
+
+`RESEND_API_KEY` must not be exposed to client-side code.

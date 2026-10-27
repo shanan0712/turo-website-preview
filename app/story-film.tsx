@@ -3,6 +3,7 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useReducedMotion } from "framer-motion";
 import Image from "next/image";
+import { storyVideoSource } from "./lib/story-video";
 
 export default function StoryFilm() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -72,7 +73,7 @@ video.play().catch(() => {});
           poster="/Images/website/movement-barcelona.jpg"
           aria-hidden="true"
         >
-          <source src="/Images/website/turo-story.mp4" type="video/mp4" />
+          <source src={storyVideoSource} type="video/mp4" />
         </video>
       ) : (
         <div className="storyFilmPoster">

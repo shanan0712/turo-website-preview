@@ -2,6 +2,7 @@
 
 import { useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { storyVideoSource } from "../lib/story-video";
 
 const HERO_START_TIME = 30;
 
@@ -62,7 +63,7 @@ export default function HomeHeroVideo() {
         poster="/Images/website/turo-story-poster.jpg"
         aria-hidden="true"
       >
-        <source src="/Images/website/turo-story.mp4" type="video/mp4" />
+        <source src={storyVideoSource} type="video/mp4" />
       </video>
       {!startFrameReady && (
         <Image
