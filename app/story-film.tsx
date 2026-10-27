@@ -46,8 +46,10 @@ export default function StoryFilm() {
       }
 
       video.currentTime = 15;
-      initialSeekAppliedRef.current = true;
-      video.removeEventListener("loadedmetadata", seekToStart);
+initialSeekAppliedRef.current = true;
+video.removeEventListener("loadedmetadata", seekToStart);
+
+video.play().catch(() => {});
     };
 
     video.addEventListener("loadedmetadata", seekToStart);
