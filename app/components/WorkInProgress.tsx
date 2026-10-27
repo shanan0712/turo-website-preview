@@ -237,8 +237,8 @@ export default function WorkInProgress() {
           />
           <span aria-current={activeIndex === 1 ? "step" : undefined}>02</span>
           <span aria-current={activeIndex === 2 ? "step" : undefined}>{formatNumber(screens.length)}</span>
-        </div>
-      </div>
+              </div>
+              </div>
     </section>
   );
 }

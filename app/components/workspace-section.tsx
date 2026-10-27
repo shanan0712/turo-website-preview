@@ -1,14 +1,58 @@
 "use client";
 
-import { useRef } from "react";
+import { FormEvent, useRef, useState } from "react";
 
 export default function WorkspaceSection() {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+const [formStatus, setFormStatus] = useState("");
 
   const openForm = () => {
     dialogRef.current?.showModal();
     dialogRef.current?.querySelector<HTMLInputElement>("#workspace-name")?.focus();
-  };
+  }; 
+
+const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  event.preventDefault();
+
+  if (isSubmitting) return;
+
+  setIsSubmitting(true);
+  setFormStatus("");
+
+  const form = event.currentTarget;
+  const formData = new FormData(form);
+
+  try {
+    const response = await fetch("/api/workspace", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: formData.get("name"),
+        company: formData.get("company"),
+        email: formData.get("email"),
+        companySize: formData.get("companySize"),
+        message: formData.get("message"),
+      }),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok || !result.ok) {
+      throw new Error(result.error || "Something went wrong.");
+    }
+
+    setFormStatus("Thanks. We’ve received your enquiry.");
+    form.reset();
+  } catch (error) {
+    console.error("Workspace form submission failed:", error);
+    setFormStatus("Something went wrong. Please try again.");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   return (
     <section id="workspace" className="workspaceSection" aria-labelledby="workspace-title">
@@ -50,7 +94,7 @@ export default function WorkspaceSection() {
           <p id="workspace-dialog-description" className="workspaceDialogIntroduction">
             Tell us a little about your team and what you have in mind.
           </p>
-          <form className="workspaceForm">
+          <form className="workspaceForm" onSubmit={handleSubmit}>
             <label>
               Name
               <input id="workspace-name" name="name" autoComplete="name" required />
@@ -78,9 +122,10 @@ export default function WorkspaceSection() {
               Message
               <textarea name="message" rows={4} required />
             </label>
-            <button className="workspaceSubmit" type="submit" disabled>
-              Send request <span aria-hidden="true">→</span>
+            <button className="workspaceSubmit" type="submit" disabled={isSubmitting}>
+              {isSubmitting ? "Sending…" : "Send request"} <span aria-hidden="true">→</span>
             </button>
+            {formStatus && <p role="status">{formStatus}</p>}
           </form>
         </div>
       </dialog>

@@ -25,7 +25,17 @@ export default function ContactPage() {
       <div className="contactShell contactLayout">
         <section className="contactInfo" aria-label="Contact information">
           <div>
-            <h2>Barcelona</h2>
+            <img
+  src="/Images/website/location-pin.png"
+  alt=""
+  width={48}
+  height={48}
+  style={{
+    display: "block",
+    marginBottom: "4px",
+    marginLeft: "-14px",
+  }}
+/>
             <p>
               Calle Amigó, 74, Planta 1ª, Puerta 2
               <br />

@@ -1,3 +1,4 @@
+import { confirmationEmail, notificationRecipient, sendEmail } from "../../lib/mail";
 import { countries } from "../../contact/countries";
 import { classifyEnquiry, validateContact, type ContactInput } from "../../contact/validation";
 
@@ -56,25 +57,23 @@ export async function POST(request: Request) {
   const html = `<p style="white-space:pre-wrap">${escapeHtml(input.message)}</p><hr><p>Name: ${escapeHtml(input.name)}<br>Email: ${escapeHtml(input.email)}<br>Phone: ${escapeHtml(phone)}<br>Type: ${kind}</p>`;
 
   try {
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        from: process.env.CONTACT_FROM_EMAIL ?? "Turó Website <onboarding@resend.dev>",
-        to: [process.env.CONTACT_TO_EMAIL ?? "info@clubturo.com"],
-        reply_to: input.email,
-        subject: `[${kind}] ${input.subject}`,
-        text,
-        html,
-      }),
+    await sendEmail({
+      to: notificationRecipient(),
+      replyTo: input.email,
+      subject: `[${kind}] ${input.subject}`,
+      text,
+      html,
     });
-    if (!response.ok) {
-      console.error("[contact] email provider error", response.status, await response.text());
-      return Response.json({ error: "We couldn’t send your message." }, { status: 502 });
-    }
   } catch (error) {
     console.error("[contact] email request failed", error);
     return Response.json({ error: "We couldn’t send your message." }, { status: 502 });
+  }
+
+  // The enquiry is already delivered; a failed confirmation must not fail the form.
+  try {
+    await sendEmail({ to: input.email, ...confirmationEmail("general", input.name) });
+  } catch (error) {
+    console.error("[contact] confirmation email failed", error);
   }
 
   return Response.json({ ok: true, kind });

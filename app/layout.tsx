@@ -24,7 +24,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Turó — Simple habits that compound",
+  title: "TURÓ",
   description:
     "Turó connects movement, nutrition, recovery and community to help everyday habits work better together.",
 };

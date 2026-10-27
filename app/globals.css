@@ -1263,10 +1263,10 @@ h3 {
 }
 
 .workInProgressSection {
-  --work-phone-width: 160px;
+  --work-phone-width: 190px;
   --work-phone-ratio: 0.55;
   --work-phone-height: calc(var(--work-phone-width) / var(--work-phone-ratio));
-  --work-slide-width: 252px;
+  --work-slide-width: 220px;
   padding-block: clamp(56px, 7vw, 88px);
   background: #FFFFFF;
   color: var(--ink);
@@ -1456,10 +1456,26 @@ h3 {
   .workInProgressSection {
     --work-phone-width: min(36vw, 138px);
     --work-slide-width: min(56vw, 224px);
+    overflow-x: hidden;
+  }
+
+  .workInProgressContent {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .workInProgressTrack {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .workInProgressRail {
+    padding-inline: calc((100vw - var(--work-slide-width)) / 2);
   }
 
   .workInProgressStory {
-    width: min(100%, 360px);
+    width: calc(100% - 32px);
+    max-width: 360px;
     height: 146px;
   }
 
@@ -1473,8 +1489,8 @@ h3 {
   }
 
   .workInProgressTimeline {
-    width: min(100%, 340px);
-    gap: 9px;
+    width: calc(100% - 32px);
+    max-width: 340px;
   }
 }
 
@@ -1498,6 +1514,22 @@ h3 {
   .workInProgressTrack {
     scroll-behavior: auto;
   }
+}
+
+.workInProgressTimeline {
+  width: calc(100% - 48px);
+  max-width: 320px;
+}
+
+@media (max-width: 767px) {
+  .workInProgressQr {
+    width: 72px;
+    height: auto;
+  }
+  .workInProgressTimeline {
+  width: calc(100% - 32px);
+  max-width: 100%;
+ }
 }
 
 .turo-legal-root {
