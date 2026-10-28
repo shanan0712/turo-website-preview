@@ -30,7 +30,6 @@ export default function SiteNav({ home = true }: { home?: boolean }) {
     target.scrollIntoView();
   };
   const links = [
-    { label: "Home", href: section("top") },
     { label: "@clubturo", href: section("social") },
     { label: "Barcelona", href: section("origin") },
     { label: "Experts", href: section("experts") },
